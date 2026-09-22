@@ -46,9 +46,9 @@ GitGuardian documents hook integration for Cursor, Claude Code, Codex, Copilot C
 
 The design should also reduce what the agent can read. Workspace scoping, environment isolation, short-lived credentials, approved connectors, and redacted logs limit exposure even when detection misses a value.
 
-## Coverage needs one inventory across all positions
+## Coverage needs a visible inventory
 
-A central view should connect the source inventory to the required control positions.
+A shared view should connect the known source inventory to the required control positions. It can begin as a maintained register for the highest-priority sources rather than a new central platform.
 
 | Position             | Main decision                                 | Common limitation                                |
 | -------------------- | --------------------------------------------- | ------------------------------------------------ |
@@ -60,3 +60,9 @@ A central view should connect the source inventory to the required control posit
 | AI tool hook         | Permit content to reach a model or agent tool | Product-specific hook coverage and bypass        |
 
 The inventory makes gaps discussable. It also prevents several green tools from being mistaken for complete coverage of one missing surface.
+
+## Coverage can grow without pretending to be complete
+
+An organization-wide inventory spanning repositories, artifacts, messages, endpoints, and storage is a mature capability, not a reasonable first milestone for every team. Start with the authoritative repositories and release artifacts for the services with the greatest credential impact. Record excluded sources and unavailable integrations beside that scope.
+
+Expansion should follow evidence. Add history when inherited exposure is material, artifacts when the source tree does not represent the shipped output, and collaboration or storage systems when incident history or data flow shows that credentials reach them. This staged approach leaves known gaps visible while avoiding a scanning identity with broad access that the team cannot yet govern.

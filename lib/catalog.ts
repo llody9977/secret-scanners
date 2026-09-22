@@ -5,7 +5,7 @@ export const capabilityArticles = [
     topic: "Purpose",
     title: "Why organizations use secret scanning",
     description:
-      "Credentials spread through systems built to copy and retain content. Scanning detects that control failure before it becomes unowned access.",
+      "Credentials spread through systems built to copy and retain content. Scanning can expose that control failure, but only within its configured coverage.",
   },
   {
     slug: "what-a-scan-can-establish",
@@ -46,9 +46,9 @@ export const operatingArticles = [
     slug: "centralizing-the-gate",
     updated: "22 September 2026",
     topic: "Control design",
-    title: "Centralizing the gate without slowing delivery",
+    title: "Coordinating secret-scanning gates",
     description:
-      "A governed service connects fast feedback, enforceable boundaries, discovery, exceptions, and response without running every engine everywhere.",
+      "A coordinated control model connects feedback, enforceable boundaries, exceptions, and response without assuming one platform or a fully centralized service.",
   },
   {
     slug: "ai-and-secret-scanning",

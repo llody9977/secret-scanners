@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Secret Scanning",
   },
   description:
-    "A practical guide to secret-scanner capabilities, deployment points, centralized gates, AI-assisted detection, and governance.",
+    "An operational decision guide to secret-scanner capabilities, deployment points, coordinated gates, AI-assisted detection, and governance.",
   icons: { icon: path("/favicon.svg") },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {

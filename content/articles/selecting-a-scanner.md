@@ -40,6 +40,8 @@ The evaluation should separate:
 
 The goal is to learn how the control behaves, not to maximize one headline number.
 
+For a first evaluation, keep the corpus small enough to explain every expected result. Include one supported provider format, one organization-specific format if relevant, one benign lookalike, one historical placement, and one execution failure. Add file types, encodings, and sources only when they represent a requirement the initial cases cannot answer.
+
 ## Metrics need their population and date
 
 Precision, recall, false positives, false negatives, runtime, and resource use can be useful when the ground truth is sound. They remain properties of a stated corpus, version, configuration, mode, and date.
@@ -64,13 +66,20 @@ Detection quality is only one dependency. A candidate should also demonstrate th
 
 A technically capable engine can still be the wrong control when its failure state is invisible or its reports create another exposure.
 
-## A proof should test one complete path
+## A bounded evaluation should test one complete path
 
-A practical proof of concept should use one representative service and follow a safe synthetic credential from introduction to decision. The test should observe local feedback where used, the central gate, the normalized finding, owner routing, exception handling, and a failed-scan case.
+A bounded evaluation should use one non-production repository or representative service and follow a safe synthetic credential from introduction to decision. Test the control positions the organization can actually administer. The path should observe the enforced gate, finding or case reference, owner routing, exception handling, and a failed-scan case. Local feedback and centralized normalization are useful additions when they are part of the intended design, not prerequisites for every evaluation.
 
 If validation is in scope, it should use a purpose-built test account or provider-supported test value. Do not use a production credential or send an unknown candidate to a provider without authorization.
 
-Acceptance evidence should show the input, configuration, tool version, completed scope, output state, gate decision, and safe report handling. A passing syntax check or successful tool installation is not control evidence.
+Acceptance evidence should show the input, configuration, tool version, completed scope, output state, gate decision, and safe report handling. If a managed service does not expose the exact engine or rule version, record the service, edition, test date, and observed behavior instead of inventing precision. A passing syntax check or successful tool installation is not control evidence.
+
+The minimum decision sequence is:
+
+1. Name the credential family, source, and event that need control.
+2. Confirm that the required edition, permissions, network path, and administrative authority are available.
+3. Run the expected finding, benign lookalike, and failed-execution cases.
+4. Record the decision, uncovered positions, operating owner, and review date.
 
 ## The decision should assign every remaining responsibility
 

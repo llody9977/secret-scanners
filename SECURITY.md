@@ -11,10 +11,11 @@ reported.
 
 ## Private reporting
 
-Report a security concern privately through GitHub security advisories after
-the repository is published. Do not open a public issue containing a token,
-password, private key, validation response, sensitive file path, or affected
-service details.
+Report a security concern through GitHub private vulnerability reporting when
+that option is available. Otherwise, contact the maintainer without placing
+sensitive details in a public issue. Never publish a token, password, private
+key, validation response, sensitive file path, or affected service details in
+an issue.
 
 If a real credential is exposed, revoke or rotate it at the issuing system
 before attempting repository cleanup. Removing a line or rewriting Git history

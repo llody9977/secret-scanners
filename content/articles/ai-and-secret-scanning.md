@@ -20,7 +20,7 @@ An agent may read `.env` files, shell output, credential helpers, configuration,
 
 This shifts one control boundary earlier. GitGuardian documents hooks for several AI coding tools that can inspect content before it reaches the model. The approach can reduce accidental prompt or tool-call exposure, but coverage depends on which hooks the product exposes and which interactions pass through them. [GitGuardian AI tool integrations](https://docs.gitguardian.com/ggshield-docs/integrations/overview).
 
-Detection should accompany stronger exposure reduction. Scope the workspace, keep production credentials out of development environments, use short-lived identity, restrict agent tools, redact logs, and separate sensitive repositories. A scanner cannot reliably recover secrecy after a value has already been transmitted.
+Detection should accompany stronger exposure reduction. The most dependable starting point is keeping production credentials out of development environments and limiting an agent to the files and tools needed for the task. Short-lived workload identity, fine-grained tool policy, and repository separation can reduce exposure further, but they require platform and application support and may need staged adoption. A scanner cannot reliably recover secrecy after a value has already been transmitted.
 
 ## MCP and tool use extend the trust boundary
 
@@ -28,13 +28,15 @@ Model Context Protocol servers and similar connectors can give an agent access t
 
 The connector still becomes a privileged component. Its permissions, token lifetime, host, logs, approval model, and exposed operations need review. A prompt-injection path that causes an agent to read or transmit a credential is not solved by repository secret scanning.
 
-Secret scanning can help inspect configuration, generated output, tool traces, and files crossing the boundary. It should be paired with least privilege, allowlisted tools, explicit confirmation for sensitive operations, and audit records that do not contain the secret itself.
+Secret scanning can help inspect configuration, generated output, tool traces, and files crossing the boundary. Where the agent platform exposes the necessary controls, pair it with least privilege, constrained tool access, confirmation for sensitive operations, and audit records that do not contain the secret itself. When those controls are unavailable, reduce the workspace and credential scope rather than assuming a prompt instruction provides enforcement.
 
 ## AI triage needs evidence and an appeal path
 
 An AI-generated true-positive or false-positive assessment can reduce analyst work, particularly when it uses code context and prior decisions. It can also be wrong in a way that looks confident.
 
-The triage record should retain the underlying detector, evidence available to the model, model or service version where available, decision, confidence, and human override. High-impact closure should not depend on an explanation alone. Validation, ownership, and service context provide stronger evidence.
+The triage record should retain the underlying detector, evidence available to the model, decision, and human override. Record the model or service version and confidence when the product exposes them; their absence is a product limitation rather than a field an operator can reconstruct. High-impact closure should not depend on an explanation alone. Validation, ownership, and service context provide stronger evidence.
+
+A team that cannot preserve this separation should use model output as a prioritization hint, not an automatic closure decision. That keeps the deterministic finding available for review when the learned assessment cannot be reproduced.
 
 Past decisions can also encode weak policy. If a model learns that a test directory is usually ignored, it may suppress a credential that still provides real access. Organization-wide memories and bulk rules need narrow scope and review.
 

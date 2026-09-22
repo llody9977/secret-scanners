@@ -29,9 +29,11 @@ This is why a private repository is not an approved secret store merely because 
 
 ## The control objective
 
-An organization needs a repeatable way to detect when authentication material enters an unapproved system, prevent high-confidence exposures before they propagate, and prove that each required surface was checked and each confirmed exposure reached an owner.
+An organization needs a repeatable way to detect when authentication material enters an unapproved system, prevent supported high-confidence exposures before they propagate, and show which required surfaces were checked and which confirmed exposures reached an owner.
 
-Secret scanning is one control used to meet that objective. It converts a policy such as “production credentials must not enter source control” into an observable check. Depending on where it runs, the check can warn a developer, reject a push, inspect history, examine a release artifact, or create a finding for response.
+Secret scanning is one control used to meet that objective. It can convert a policy such as “production credentials must not enter source control” into an observable check. Depending on the product, edition, configuration, and control point, the check may warn a developer, reject a push, inspect history, examine a release artifact, or create a finding for response.
+
+Complete coverage is rarely the starting point. A workable first scope names the most important repositories or release paths, the credential families most likely to appear there, one accountable owner, and the behavior when the scan cannot complete. That narrower scope is more useful than claiming organization-wide coverage that cannot yet be evidenced.
 
 The scanner serves four related jobs.
 
@@ -106,7 +108,7 @@ Broad assurance frameworks such as ISO 27001 and SOC 2 are commonly implemented 
 
 An auditor, risk owner, or engineering lead needs more than a screenshot showing that a feature is enabled. Useful evidence connects policy, coverage, operation, and response.
 
-At minimum, the record should show the in-scope repositories and other sources, onboarding status, scan mode, branch and history coverage, tool and rule version, start and completion state, exclusions, bypasses, findings, dispositions, and response timestamps. Sensitive raw values should not be copied into the evidence pack.
+The target record should show the in-scope repositories and other sources, onboarding status, scan mode, branch and history coverage, tool and rule version, start and completion state, exclusions, bypasses, findings, dispositions, and response timestamps. Few teams will obtain every field from every control on the first rollout. The workable minimum is source identity, declared scope, tool or service version, completion state, finding count, and an owner for failures and confirmed exposure. Missing fields should remain visible as evidence gaps rather than being inferred. Sensitive raw values should not be copied into the evidence pack.
 
 Three states must remain separate.
 
@@ -122,7 +124,7 @@ None of these states proves that no credential exists outside the declared cover
 
 Finding totals are easy to collect and difficult to interpret. A lower count could mean better prevention, narrower coverage, failing scanners, or broader exclusions.
 
-A governed program should instead measure whether the control and response are working.
+A governed program should instead measure whether the control and response are working. Start with required-source completion, incomplete runs, bypasses, and time to containment. Add broader measures only when the underlying inventory and timestamps are reliable.
 
 | Measure                           | Question answered                                                                                                   |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -134,7 +136,7 @@ A governed program should instead measure whether the control and response are w
 | Exception age and ownership       | Whether suppressions remain narrow, justified, reviewed, and accountable                                            |
 | Persistent credential reduction   | Whether the environment is moving toward short-lived, scoped, workload-bound authority                              |
 
-The last measure matters most over time. A mature program should reduce the number of reusable secrets that can be exposed, not merely improve its ability to find them.
+The last measure matters over time, but it usually depends on identity-platform and application changes outside the scanning team. Treat persistent-credential reduction as a shared architecture outcome rather than a scanner performance target. The scanning program can show where reusable credentials still appear and whether the exposure rate is changing.
 
 ## The scanner is a sensor and sometimes a gate
 

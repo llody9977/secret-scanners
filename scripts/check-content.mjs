@@ -19,6 +19,16 @@ assert.deepEqual(
   "Article files and catalog entries differ",
 );
 
+const readmeSource = readFileSync("README.md", "utf8");
+const layoutSource = readFileSync("app/layout.tsx", "utf8");
+assert.match(readmeSource, /operational decision guide/i, "README must state the publication type");
+assert.match(layoutSource, /operational decision guide/i, "Site metadata must match the README");
+assert.doesNotMatch(
+  `${readmeSource}\n${layoutSource}`,
+  /a practical (?:guide|publication)/i,
+  "Publication must not claim to be a hands-on practical guide",
+);
+
 const referenceSource = readFileSync("app/references/page.tsx", "utf8");
 const referenceUrls = new Set(
   [...referenceSource.matchAll(/"(https:\/\/[^"\s]+)"/g)].map((match) => match[1]),
