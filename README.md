@@ -24,7 +24,7 @@ npm run check
 
 The check validates TypeScript, produces the static export, verifies every
 article route, checks internal links and anchors, and reconciles article,
-catalog, reference, and historical-evidence invariants.
+catalog, and reference invariants.
 
 ## Contribution model
 
@@ -40,8 +40,6 @@ write access.
 - The scanner catalog is dated and non-ranked.
 - Documented, configured, observed, failed, and not evaluated states remain
   distinct.
-- Historical benchmark records are preserved under `research/historical/` and
-  are not presented as current market results.
 - No live credential belongs in examples, issues, test data, or published
   output.
 

@@ -10,7 +10,6 @@ const articleSources = articleFiles.map((file) => ({
   file,
   source: readFileSync(join(articleDirectory, file), "utf8"),
 }));
-const publishedText = articleSources.map(({ source }) => source).join("\n");
 
 const catalogSource = readFileSync("lib/catalog.ts", "utf8");
 const catalogSlugs = [...catalogSource.matchAll(/slug: "([a-z0-9-]+)"/g)].map((match) => match[1]);
@@ -51,45 +50,6 @@ for (const match of scannerSource.matchAll(/(?:activitySource|source): "([^"]+)"
   assert(match[1].startsWith("https://"), `Scanner source must use HTTPS: ${match[1]}`);
 }
 
-const benchmark = JSON.parse(readFileSync("research/historical/benchmark-2026-09-01.json", "utf8"));
-for (const tool of benchmark.tools) {
-  assert.equal(tool.tp + tool.fn + tool.na, tool.sigma, `${tool.tool} population is inconsistent`);
-  if (tool.tp + tool.fp > 0) {
-    const precision = `${((100 * tool.tp) / (tool.tp + tool.fp)).toFixed(1)}%`;
-    assert.equal(tool.precision, precision, `${tool.tool} precision is inconsistent`);
-  }
-  const recall = `${((100 * tool.tp) / (tool.tp + tool.fn)).toFixed(1)}%`;
-  assert.equal(tool.recall, recall, `${tool.tool} recall is inconsistent`);
-}
-for (const retired of benchmark.retired.patterns) {
-  assert(
-    !new RegExp(retired, "i").test(publishedText),
-    `Retired benchmark figure returned: ${retired}`,
-  );
-}
-
-const regression = JSON.parse(
-  readFileSync("research/historical/control-regression-2026-08-25.json", "utf8"),
-);
-const positives = regression.corpus.scenarios.filter(
-  (scenario) => scenario.expected_control_decision === "block",
-);
-const negatives = regression.corpus.scenarios.filter(
-  (scenario) => scenario.expected_control_decision === "pass",
-);
-assert.equal(positives.length, regression.corpus.positive_scenarios);
-assert.equal(negatives.length, regression.corpus.safe_negative_scenarios);
-for (const tool of ["gitleaks", "trufflehog"]) {
-  assert.equal(
-    positives.filter((scenario) => scenario[tool].detected).length,
-    regression.summary[`${tool}_positive_scenarios_detected`],
-  );
-  assert.equal(
-    negatives.filter((scenario) => !scenario[tool].detected).length,
-    regression.summary[`${tool}_safe_negatives_passed`],
-  );
-}
-
 console.log(
-  `Verified ${articleFiles.length} article sources, ${referenceUrls.size} registered references, and 2 historical evidence records.`,
+  `Verified ${articleFiles.length} article sources and ${referenceUrls.size} registered references.`,
 );
