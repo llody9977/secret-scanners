@@ -84,4 +84,4 @@ The maintained [scanner catalog](/secret-scanners/scanners/) is a starting point
 
 A public comparative benchmark is valuable only when someone will maintain its corpus, tool adapters, versions, scoring, and incomplete-run states. Without that commitment, dated product profiles and a transparent evaluation method are more accurate than a stale leaderboard.
 
-This repository therefore preserves earlier benchmark evidence as historical research but does not publish its scores as current market findings. A future benchmark can be added as a separate, explicitly versioned track without changing the selection guidance.
+Earlier benchmark scores are not presented as current market findings. A future benchmark should be a separate, explicitly versioned track with a maintained corpus, reproducible adapters, and visible incomplete-run states.

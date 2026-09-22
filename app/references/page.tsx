@@ -205,12 +205,6 @@ export default function References() {
             connectors, and maintenance status can change. Implementation decisions need a current
             check against the selected product and plan.
           </p>
-          <h2>Historical evidence</h2>
-          <p>
-            Results migrated from the retiring repositories remain under the repository research
-            directory with their original dates, versions, corpora, and limitations. They are not
-            current rankings and do not appear in the scanner catalog.
-          </p>
           <h2>Corrections</h2>
           <p>
             Corrections should be raised in the repository issue tracker after publication with

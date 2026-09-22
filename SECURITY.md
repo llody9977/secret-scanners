@@ -1,8 +1,7 @@
 # Security policy
 
-This repository contains defensive guidance and historical synthetic test
-results. It should never contain a live credential or an unredacted scanner
-report.
+This repository contains defensive guidance. It should never contain a live
+credential or an unredacted scanner report.
 
 ## Supported version
 
