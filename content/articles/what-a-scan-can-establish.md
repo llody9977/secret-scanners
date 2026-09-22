@@ -28,6 +28,12 @@ An empty or missing report cannot be interpreted safely without the process outc
 
 The same discipline applies to individual validation checks. Network errors, permission failures, rate limits, and unsupported credential types are inconclusive. They are not invalid credentials.
 
+## Preserve a workable minimum result
+
+Not every scanner or platform exports the same fields. A usable minimum result records the source, declared scope, scanner and rule version where available, completion state, and a redacted finding reference. If the platform cannot expose a field, record that limitation once in the control design instead of reconstructing certainty in every case.
+
+This minimum is deliberately smaller than a mature evidence model. Repository inventory, bypass events, validation details, ownership, and containment timestamps can be added as integrations improve. The result remains trustworthy because absent evidence stays absent rather than being converted into a clean or invalid state.
+
 ## Validation narrows one question
 
 Live validation asks whether a provider accepts a candidate for a defined operation now. TruffleHog, Betterleaks, Kingfisher, Titus, GitGuardian, and Semgrep document validation for supported credential families. The capability can separate many active credentials from expired or fabricated values and can add useful metadata.

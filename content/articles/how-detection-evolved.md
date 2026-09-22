@@ -55,3 +55,9 @@ The evolution of secret scanning is better understood as additional questions ar
 | Learned classification  | Does wider context resemble an unstructured secret   | Deterministic coverage and enforcement suitability |
 
 Selection should begin with the uncertainty that needs to be reduced. Adding every available method can increase cost and noise without closing the important coverage gap.
+
+## Start with the signal the team can operate
+
+A team does not need every detection method before it can improve control. A workable starting point is a maintained rule set for known provider and internal formats at one shared delivery boundary, with visible execution failures and a route for confirmed findings. Entropy, decoding, validation, or learned classification should be added when a named placement or credential family remains uncovered.
+
+Each addition creates operating work. Decoding and archive extraction increase the content inspected. Validation introduces outbound requests and provider behavior. Learned analysis may add service, privacy, latency, and explanation dependencies. The useful sequence is therefore driven by a verified coverage gap and the team's ability to handle the resulting findings, not by the historical order in which techniques appeared.

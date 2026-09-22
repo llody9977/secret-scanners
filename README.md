@@ -1,13 +1,18 @@
 # Secret Scanning
 
-A practical publication about secret-scanner capabilities, deployment points,
-centralized gates, AI-assisted detection, selection, and governance.
+An operational decision guide to secret-scanner capabilities, deployment
+points, coordinated gates, AI-assisted detection, selection, and governance.
 
 The site complements
 [Secret Exposure](https://llody9977.github.io/secret-exposure/). It stays
 focused on detection and enforcement while the companion publication covers
 business risk, credential lifecycle, containment, recovery, and reducing
 persistent credentials.
+
+The publication helps readers decide what a scan result supports, where a
+control can act, what remains with the operator, and what evidence is needed
+before relying on it. It is not an installation tutorial, product benchmark,
+or claim that a documented feature is enabled in a particular environment.
 
 ## Run locally
 

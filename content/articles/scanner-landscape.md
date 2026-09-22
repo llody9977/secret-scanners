@@ -49,3 +49,9 @@ Coverage also changes. Rules, providers, editions, and connectors evolve. Every 
 A practical design may use the repository host for high-confidence receive-time protection, a portable engine for internal formats and consistent CI policy, and a scheduled discovery capability for history and wider sources. Another organization may choose a platform that supplies most of those functions as one service.
 
 Running every engine at every stage adds latency, duplicate findings, exception drift, and maintenance. The better combination closes named gaps and assigns each component one clear role. Tool count is not a control objective.
+
+## Operating fit should narrow the shortlist
+
+Broad source coverage is useful only when the organization can authorize the access, protect the scanner identity, store findings safely, and support the connector. Live validation is useful only when outbound checks are approved and inconclusive responses remain visible. A receive-time feature is useful only when the required edition and administrative authority are available.
+
+For a small team, one portable engine at a protected merge or release boundary may be a more dependable first control than a broad platform that cannot be fully onboarded. A larger organization may accept a managed service because central inventory, routing, and support reduce more work than the service introduces. The catalog should narrow these choices; a configured evaluation must decide between them.

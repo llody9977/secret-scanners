@@ -1,10 +1,10 @@
-## Centralization begins with one control service
+## Coordination begins with one control model
 
-Teams experience secret scanning through tools, but governance needs a service boundary. The service defines what must be protected, which events need prevention, where discovery is required, who owns the policy, and how a finding reaches someone able to act.
+Teams experience secret scanning through tools, but governance needs a shared control model. The model defines what must be protected, which events need prevention, where discovery is required, who owns the policy, and how a finding reaches someone able to act. It may be implemented by a platform security service, a protected reusable workflow, repository-host controls, or a smaller combination.
 
-Without that boundary, each repository chooses its own scanner, rules, schedule, exclusions, and failure behavior. Coverage becomes difficult to measure and a developer can be blocked without a supported route to resolve the problem. Centralization should remove this inconsistency while preserving fast local feedback.
+Without that model, each repository can choose its own scanner, rules, schedule, exclusions, and failure behavior. Coverage becomes difficult to measure and a developer can be blocked without a supported route to resolve the problem. Coordination should reduce this inconsistency while preserving fast local feedback.
 
-The service does not need one engine. It needs one policy and evidence model across the engines that perform different roles.
+The organization does not need one engine or a new central platform before it can begin. It needs a minimum policy and evidence model across the controls that perform different roles.
 
 ## Each layer should stop one named event
 
@@ -22,11 +22,13 @@ This classification prevents one common overstatement. A required CI scanner can
 
 Not every layer needs the same detector. Receive-time controls normally favor high-confidence rules and predictable latency. Scheduled discovery can accept broader rules, decoding, extraction, and controlled validation. The design should assign the smallest sufficient capability to each decision.
 
-## Policy belongs outside an individual repository
+## Policy needs the strongest boundary available
 
 A repository-controlled workflow is useful for transparency, but it is weak central authority when an ordinary change can remove the job, replace the configuration, reduce Git history, or mark the result optional.
 
-The organization should control the required status, reusable workflow or security policy, approved versions, and minimum rule set from a boundary that repository contributors cannot silently change. GitHub rulesets, GitLab security policies, centrally managed pre-receive hooks, and protected reusable pipelines are possible mechanisms. Their exact authority depends on the platform and plan.
+Where the platform and edition allow it, the organization should control the required status, reusable workflow or security policy, approved versions, and minimum rule set from a boundary that repository contributors cannot silently change. GitHub rulesets, GitLab security policies, centrally managed pre-receive hooks, and protected reusable pipelines are possible mechanisms. Their authority and bypass behavior need to be confirmed in the selected environment.
+
+When enterprise policy controls are unavailable, a centrally owned workflow referenced by repositories can still reduce drift, but it is not equivalent to an enforced host boundary. Protect the default branch, review changes to the workflow reference, inventory participating repositories, and report repositories that stop producing results. This is a workable intermediate control, not proof that contributors cannot bypass it.
 
 Repository teams still need a defined extension point for internal formats and safe exceptions. Local configuration may add rules without being able to disable the central baseline. Changes to blocking rules should pass regression tests before reaching every repository.
 
@@ -46,13 +48,13 @@ Legitimate examples, generated files, fixtures, and unsupported migrations can c
 
 An exception record should identify the candidate, repository or path scope, reason, approving role, expiry, compensating control, and review evidence. The record should use a fingerprint or safe reference instead of storing the raw value. Broad path exclusions and permanent allowlists deserve greater scrutiny because they suppress future unknown findings as well as the current one.
 
-Push-protection bypasses need the same treatment. GitHub and GitLab expose different bypass and skip mechanisms. Enabling a feature without monitoring those decisions leaves the organization unable to tell whether prevention operated as intended. [GitHub push protection](https://docs.github.com/en/code-security/secret-scanning/introduction/about-push-protection), [GitLab push protection](https://docs.gitlab.com/user/application_security/secret_detection/secret_push_protection/).
+Push-protection bypasses need the same treatment. GitHub and GitLab expose different bypass and skip mechanisms. Enabling a feature without monitoring those decisions leaves the organization unable to tell whether prevention operated as intended. [GitHub push protection](https://docs.github.com/en/code-security/concepts/secret-security/push-protection), [GitLab push protection](https://docs.gitlab.com/user/application_security/secret_detection/secret_push_protection/).
 
 ## Findings need one safe intake model
 
 Different scanners produce different rule names, severities, validation states, and locations. Central handling should normalize enough context to route and govern a case without flattening important uncertainty.
 
-A practical intake record includes:
+A mature intake record can include:
 
 - source and repository identity
 - branch, commit, artifact, or message location
@@ -67,17 +69,19 @@ A practical intake record includes:
 
 Raw findings should remain in a restricted system. Build summaries, pull-request comments, tickets, and dashboards should carry redacted context. A scanner that finds a credential and then republishes it into a broadly readable artifact creates a second exposure path.
 
+If a central case system is not available, begin with a restricted finding location, a safe reference in the engineering workflow, and one route to the service owner. Add normalization fields as multiple scanners and sources create a demonstrated need. Coordination that delays containment is not an improvement.
+
 ## Governance depends on coverage and response evidence
 
 Finding counts alone are ambiguous. A falling count can mean better prevention, reduced scanning, broader exclusions, or unreported failures.
 
-The service should report coverage against an inventory, completion states, bypasses, exception age, time to first ownership, time to effective invalidation, and overdue recovery work. Detection and response clocks remain separate. Closing an alert is not evidence that access stopped.
+The control owner should report coverage against the known inventory, completion states, bypasses, exception age, time to first ownership, time to effective invalidation, and overdue recovery work. Begin with the measures supported by reliable source and response timestamps, and identify the unavailable measures rather than estimating them. Detection and response clocks remain separate. Closing an alert is not evidence that access stopped.
 
 Sampling connects the dashboard back to reality. A reviewer should be able to select a repository and trace the required gates, last completed scans, approved configuration, exception history, one finding, and evidence of containment. That trace is stronger assurance than a large green total.
 
 ## Rollout should reduce friction in measured stages
 
-A practical rollout starts with visibility. Inventory repositories, identify credential families and existing controls, and run discovery without blocking. The next stage tunes high-confidence rules and gives teams a supported remediation route. Prevention then begins with a small group of active repositories before expanding through central policy.
+A workable rollout starts with the inventory that already exists, even when it is incomplete. Select a small group of active repositories, identify their important credential families and existing controls, and run discovery without blocking. The next stage tunes high-confidence rules and gives those teams a supported remediation route. Prevention can then begin at the strongest available boundary before expanding as platform authority and support capacity permit.
 
 Legacy findings and new introductions need different queues. Blocking new high-confidence secrets is often possible before every historical candidate is remediated. A baseline can isolate accepted legacy debt, but it needs ownership and an exit plan so yesterday's exposure does not become permanent policy.
 

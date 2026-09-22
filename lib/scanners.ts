@@ -20,7 +20,7 @@ export const scanners: ScannerProfile[] = [
   {
     name: "Gitleaks",
     category: "Open source",
-    status: "Active",
+    status: "Feature complete; security fixes only",
     activity:
       "Release v8.30.1 on 21 March 2026; upstream push on 9 September 2026. The project describes itself as feature complete.",
     activitySource: "https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1",
@@ -197,7 +197,7 @@ export const scanners: ScannerProfile[] = [
     category: "Repository platform",
     status: "Current repository-platform capability",
     activity:
-      "GitHub shipped secret-scanning pattern and workflow improvements in 2026, including pull-request enforcement on 9 September 2026.",
+      "GitHub announced a public-preview ruleset for blocking pull-request merges with unresolved secret-scanning alerts on 9 September 2026.",
     activitySource:
       "https://github.blog/changelog/2026-09-09-block-pull-requests-with-exposed-secrets-from-merging/",
     detection: "Provider patterns, generic patterns, custom patterns, and AI-detected passwords",

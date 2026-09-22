@@ -15,8 +15,21 @@ export default function Home() {
         <p className="intro-copy">
           Source repositories, build systems, artifacts, and collaboration tools are designed to
           copy and retain information. They are not approved stores for authentication material. A
-          secret scanner detects when a credential crosses that boundary, can stop high-confidence
-          exposure before it spreads, and provides evidence for an owned response.
+          secret scanner can detect some credentials crossing that boundary, stop supported
+          high-confidence exposures at an enforced gate, and provide evidence for an owned response.
+          Its value depends on the configured rules, reachable sources, visible failures, and a team
+          able to invalidate the exposed access.
+        </p>
+      </section>
+
+      <section className="thesis">
+        <h2>Use the guide as a decision path</h2>
+        <p>
+          Start with what a result can establish, then choose the event and source that need
+          control. Use the operating articles to define ownership, failure handling, and a bounded
+          evaluation. The scanner catalog is a dated shortlist for that evaluation, not proof that a
+          product will work under a particular edition, configuration, permission model, or network
+          boundary.
         </p>
       </section>
 
@@ -50,10 +63,11 @@ export default function Home() {
       <section className="thesis">
         <h2>The useful question is not which scanner wins.</h2>
         <p>
-          The useful question is whether the chosen combination covers the required credential types
-          and surfaces, fails visibly, and connects a finding to an owned response. The maintained{" "}
-          <a href={path("/scanners/")}>scanner catalog</a> supports that decision without presenting
-          a universal ranking.
+          The useful question is whether the chosen combination covers the highest-priority
+          credential types and surfaces, fails visibly, and connects a finding to an owned response.
+          Broader coverage can follow as inventory, platform authority, and operating capacity
+          improve. The maintained <a href={path("/scanners/")}>scanner catalog</a> supports that
+          decision without presenting a universal ranking.
         </p>
       </section>
 

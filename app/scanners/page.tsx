@@ -21,6 +21,11 @@ export default function ScannerCatalog() {
           capability. It does not establish product quality or suitability. Product names, editions,
           and documented behavior were checked on {checkedOn}.
         </p>
+        <p>
+          The catalog supports shortlisting. It does not replace a configured test of the exact
+          edition, permissions, network path, rules, and failure behavior available to the adopting
+          organization.
+        </p>
       </div>
 
       <section className="activity-method" aria-labelledby="activity-method-title">

@@ -66,7 +66,7 @@ const sources = [
   ],
   [
     "GitHub push protection",
-    "https://docs.github.com/en/code-security/secret-scanning/introduction/about-push-protection",
+    "https://docs.github.com/en/code-security/concepts/secret-security/push-protection",
     "Receive-time blocking, bypass behavior, and the relationship between push protection and secret-scanning alerts.",
   ],
   [
