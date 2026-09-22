@@ -1,0 +1,43 @@
+{
+  "name": "secret-scanners",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "node scripts/serve-static.mjs",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check .",
+    "content:check": "node scripts/check-content.mjs",
+    "check": "npm run lint && npm run format:check && npm run content:check && tsc --noEmit && npm run build && node scripts/check-export.mjs",
+    "postbuild": "node scripts/prepare-pages.mjs"
+  },
+  "dependencies": {
+    "marked": "^18.0.11",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-server-dom-webpack": "19.2.8",
+    "vinext": "1.0.0-beta.9"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260921.1",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.1.1",
+    "@vitejs/plugin-rsc": "0.5.34",
+    "oxfmt": "0.66.0",
+    "oxlint": "1.76.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "tailwindcss": "4.2.1",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "wrangler": "4.135.0"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
