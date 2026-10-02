@@ -15,11 +15,11 @@
     "postbuild": "node scripts/prepare-pages.mjs"
   },
   "dependencies": {
-    "marked": "^18.0.13",
+    "marked": "^18.0.14",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-server-dom-webpack": "19.3.0",
-    "vinext": "1.0.0-beta.10"
+    "vinext": "1.0.0-beta.12"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260921.1",
